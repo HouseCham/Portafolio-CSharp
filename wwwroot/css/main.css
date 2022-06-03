@@ -1,0 +1,28 @@
+﻿#me{
+    max-width: 500px;
+    border-radius: 50%;
+}
+.welcome{
+    margin: 5rem 0 10rem 0;
+}
+.welcome h1{
+    margin: 1rem;
+}
+.welcome p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.5;
+    font-size: 1.5rem;
+}
+
+#logo-img{
+    width: 100px;
+}
+
+.cabecera{
+    font-weight: bold;
+}
+
+.skills i{
+    color: #0d6efd;
+    margin-right: 1rem;
+}
