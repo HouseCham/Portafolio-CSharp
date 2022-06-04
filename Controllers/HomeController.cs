@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portafolio.Models;
+using Portafolio.Services;
 using System.Diagnostics;
 
 namespace Portafolio.Controllers
@@ -7,15 +8,23 @@ namespace Portafolio.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRepositorioProyectos repositorioProyectos;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IRepositorioProyectos repositorioProyectos)
         {
             _logger = logger;
+            this.repositorioProyectos = repositorioProyectos;
         }
 
         public IActionResult Index()
         {
-            return View();
+            _logger.LogInformation("Este es un mensaje de log");
+            var proyectos = repositorioProyectos.ObtenerProyetos().Take(3).ToList();
+            var modelo = new HomeIndexDTO()
+            {
+                Proyectos = proyectos,
+            };
+            return View(modelo);
             /* Si View esta vacio, se retornara la vista cuyo nombre sea igual al nombre del metodo (en este caso Index)... 
              * mientras que si se le agrega un parametro ("Index2"), se retornara la vista con ese nombre */
         }
